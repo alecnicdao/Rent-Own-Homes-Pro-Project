@@ -1,0 +1,282 @@
+@import "functions";
+@import "variables";
+
+$font-family-sans-serif: "Mukta 500", sans-serif;
+$enable-responsive-font-sizes: true;
+
+/* Color Scheme */
+$theme-colors: (
+    "primary": #b3b6b8,
+    "secondary": #4d6466,
+    "success": #789e9e,
+    "info": #c9c6bf,
+    "warning": #eef3db,
+    "danger": #fe615a
+);
+
+$link-color: theme-color("primary");
+$link-hover-color: darken($link-color, 15%);
+
+$text-muted: $gray-700;
+
+$progress-height: 2rem;
+
+@import "bootstrap";
+
+/* Global Style Rules */
+
+body {
+    font-family: $font-family-sans-serif;
+    padding-top: 6rem;
+}
+
+.star-rating {
+    color: #eef3db;
+}
+
+.timeline {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+a.btn {
+    border-radius: 30px;
+    color: black;
+}
+
+a.btn:hover {
+    color: white !important;
+}
+
+h1, h2, h3 {
+    font-family: "Passion One", cursive;
+    color: $gray-900;
+}
+
+h2 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 2.618rem;
+    font-weight: 400;
+}
+
+h4 {
+    font-family: "Mutka", Arial, Helvetica, sans-serif;
+    font-size: 1.618rem;
+    font-weight: 700;
+}
+
+.title-underline {
+    width: 200px;
+    height: 10px;
+    margin: 0 auto;
+}
+
+.height-80 {
+    min-height: 80vh;
+}
+
+/* Timeline */
+
+* {
+    box-sizing: border-box;
+}
+
+/* Container around content */
+.container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+/* Place the container to the right */
+.right {
+    left: 0%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+    left: -16px;
+  }
+  
+  /* The actual content */
+  .content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+  }
+  
+  /* Media queries - Responsive timeline on screens less than 600px wide */
+  @media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+    .timeline::after {
+      left: 31px;
+    }
+  
+  /* Full-width containers */
+    .container {
+      width: 100%;
+      padding-left: 70px;
+      padding-right: 25px;
+    }
+  
+  /* Make sure that all arrows are pointing leftwards */
+    .container::before {
+      left: 60px;
+      border: medium solid white;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+    }
+  
+  /* Make sure all circles are at the same spot */
+    .left::after, .right::after {
+      left: 15px;
+    }
+  
+  /* Make all right containers behave like the left ones */
+    .right {
+      left: 0%;
+    }
+}
+
+/* Section Style Rules */
+
+.navbar {
+    font-family: "Passion One", cursive;
+    font-size: 30px;
+    
+}
+
+.nav-link {
+    color: #fe615a;
+}
+
+.nav-link:hover {
+    color: #fe615a;
+}
+
+header h1 {
+    text-shadow: 2px 2px black;
+    letter-spacing: 2px;
+}
+
+.display-2 {
+    line-height: 1.0 !important;
+}
+
+.masthead {
+    background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    url(../img/responsive_design.jpg)center/cover;
+    height: 90vh;
+}
+
+.howItWorks {
+    text-shadow: 0 3px 5px rgba(0,0,0,0.2);
+}
+
+/* Button Hover Effects */
+
+.hvr-shutter-out-horizontal {
+    border-radius: 1.5rem; 
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    background: #ffc107;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.hvr-shutter-out-horizontal:before {
+    border-radius: 1.5rem;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #6632b1;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-functi: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.hvr-shutter-out-horizontal:hover, .hvr-shutter-out-horizontal:focus, .hvr-shutter-out-horizontal:active {
+    color: white;
+}
+
+.hvr-shutter-out-horizontal:hover:before, .hvr-shutter-out-horizontal:focus:before,
+.hvr-shutter-out-horizontal:active:before {
+    -webkit-transform: scale(1.05, 1.05);
+    transform: scale(1.05, 1.05);
+}
+
+.about-picture {
+    background: url(https://images.pexels.com/photos/1642125/pexels-photo-1642125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
+    center/cover no-repeat fixed;
+}
+
+/* Testimonial Carousel */
+
+.carousel-control-prev {
+    margin-left: -50px;
+}
+
+.carousel-control-next {
+    margin-right: -50px;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 576px) {
+    .masthead {
+        background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+        url(../img/responsive_design_mobile.jpg)center/cover;
+        height: 90vh;
+    }
+}
